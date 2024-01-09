@@ -26,14 +26,15 @@ class WebCore
     }
     private function init()
     {
-        include_once WEP_PLUGIN_DIR . 'class/WepAutoLoad.php';
         add_action('wp_enqueue_scripts', [$this, 'wp_wep_register_assets']);
 
         // Include
+        include_once WEP_PLUGIN_DIR . 'class/AutoLoad.php';
         include_once(ABSPATH . 'wp-includes/pluggable.php');
+        include_once WEP_PLUGIN_DIR . 'panel/router.php';
     }
 
-    public function wp_wep_register_assets_register_assets()
+    public function wp_wep_register_assets()
     {
         // CSS
         wp_register_style('wep-style', WEP_PLUGIN_URL . '/assets/front/css/style.css', '', '1.0.0');
